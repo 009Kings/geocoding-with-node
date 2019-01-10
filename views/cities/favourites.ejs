@@ -1,0 +1,36 @@
+<div class="level">
+  <h1 class="title is-2 level-item">Favourites</h1>
+</div>
+
+<div class="task-container columns is-mobile is-centered is-multiline">
+  <% faveCities.forEach(city=>{ %>
+  <div class="card column is-narrow">
+    <div class="card-content">
+      <div class="media">
+        <div class="media-left">
+          <figure class="image is-48x48">
+            <img src="http://www.placekitten.com/96/96" alt="kitten that will be an icon">
+          </figure>
+        </div>
+        <div class="media-content">
+          <p><strong><%= city.city %></strong></p>
+          <p><%= city.state %></p>
+        </div>
+      </div>
+      <div class="content">
+        <form action="favorites/?_method=DELETE" method="POST">
+          <input type="hidden" name="id" value="<%= city.id %>">
+          <button type="submit" class="button is-danger is-outlined">
+            <span>Delete</span>
+            <span class="icon is-small">
+              <i class="fas fa-times"></i>
+            </span>
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+  <% }) %>
+</div>
+
+<% include ../partials/map.ejs %>

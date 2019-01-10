@@ -1,0 +1,31 @@
+<div class="form">
+  <h1>Travellers</h1>
+</div>
+
+<div class="level">
+  <h3>Add a Traveller</h3>
+  <form action="/travellers" method="post">
+    <label for="firstname">First Name:</label>
+    <input type="text" name="firstname" id="firstname">
+    <label for="lastname">Last Name:</label>
+    <input type="text" name="lastname" id="lastname">
+    <input type="submit" value="Add Traveler">
+  </form>
+</div>
+
+<div class="columns">
+  <% travellers.forEach((traveller)=>{ %>
+    <div class="card column">
+    <div class="content">
+      <a href="/travellers/<%= traveller.id %>">
+        <%= traveller.firstname%> <%= traveller.lastname%>
+      </a>
+      
+      <form action="/travellers/?_method=DELETE" method="post">
+      <input type="hidden" name="id" value="<%= traveller.id %>">
+      <input type="submit" value="Delete this Traveller">
+      </form>
+    </div>
+  </div>
+    <% }) %>
+</div>
